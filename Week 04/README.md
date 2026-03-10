@@ -1,3 +1,61 @@
+### Теория
+Какво ще се отпечата?
+
+```cpp
+#include <iostream>
+
+class Tracker
+{
+public:
+    static int total;
+    Tracker() { ++total; }
+};
+
+int Tracker::total = 0;
+
+int main()
+{
+    Tracker a, b;
+    std::cout << Tracker::total << std::endl;
+
+    Tracker c;
+    std::cout << Tracker::total << std::endl;
+}
+```
+
+```cpp
+#include <iostream>
+
+class A
+{
+    int value;
+
+public:
+    A(int v) : value(v) {}
+
+    static void printValue()
+    {
+        std::cout << value << std::endl;
+    }
+};
+
+int main()
+{
+    A obj(42);
+    A::printValue(); 
+}
+```
+
+```cpp
+#include <iostream>
+#define SQUARE(a) a * a
+
+int main()
+{
+    std::cout << SQUARE(3 + 1) << std::endl;
+}
+```
+
 
 ### Задача 1
 Създайте клас `Student` и клас `StudentRepository`, както следва:

@@ -145,3 +145,59 @@ int main() {
 }
 ```
 
+Създайте клас `Song` и клас `Playlist`, които управляват песни и плейлисти.
+
+# Задачи
+
+### Клас Song
+
+- **Private полета:**
+  * `char* title`
+  * `char* artist`
+  * `int duration`
+
+- **Rule of Five:**
+  * `Song(const char* title, const char* artist, int duration)`
+  * `Song(const Song& other)`
+  * `Song(Song&& other)`
+  * `Song& operator=(const Song& other)` 
+  * `Song& operator=(Song&& other)`
+  * `~Song()` 
+
+- **Методи:**
+  * `const char* getTitle() const`
+  * `const char* getArtist() const`
+  * `int getDuration() const`
+
+- **Оператори:**
+  * `auto operator<=>(const Song& other) const` – сравнява по `duration`, после лексикографски по `title`
+  * `bool operator==(const Song& other) const`
+  * `friend std::ostream& operator<<(std::ostream& os, const Song& s)`
+---
+
+### Клас `Playlist`
+
+- **Private полета:**
+  * `Song* songs`
+  * `size_t count`
+  * `size_t capacity`
+
+- **Rule of Five:**
+  * `Playlist(size_t cap = 8)`
+  * `Playlist(const Playlist& other)`
+  * `Playlist(Playlist&& other)`
+  * `Playlist& operator=(const Playlist& other)`
+  * `Playlist& operator=(Playlist&& other)`
+  * `~Playlist()`
+
+- **Методи:**
+  * `void addSong(const Song& s)` – добавя копие, преоразмерява при нужда
+  * `void addSong(Song&& s)` – добавя чрез move
+  * `void removeSong(size_t idx)` – премахва по индекс, пренарежда
+  * `Song& operator[](size_t idx)` – достъп за промяна
+  * `const Song& operator[](size_t idx) const` – достъп за четене
+  * `size_t getCount() const`
+  * `int totalDuration() const` – сума от всички `duration`
+  * `void sortByDuration()` – сортира песните (ползвайте `operator<=>`)
+  * `void print() const` – отпечатва всички песни с `operator<<`
+

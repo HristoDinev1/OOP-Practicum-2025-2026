@@ -1,165 +1,94 @@
-
 # Задача 1
 
-### Клас `Product`
+## Клас `Product`
 
-- **Private полета:**
+### Private полета:
+- `std::string name`
+- `std::string category`
+- `double price`
+- `int quantity`
 
-  * `std::string name`
+### Конструктор:
+- `Product(std::string name, std::string category, double price, int quantity)`
 
-  * `std::string category`
+### Методи:
+- `const std::string& getName() const`
+- `const std::string& getCategory() const`
+- `double getPrice() const`
+- `int getQuantity() const`
+- `double totalValue() const`
 
-  * `double price`
-
-  * `int quantity`
-
-- **Конструктор:**
-
-  * `Product(std::string name, std::string category, double price, int quantity)`
-
-
-
-- **Методи:**
-
-  * `const std::string& getName() const`
-
-  * `const std::string& getCategory() const`
-
-  * `double getPrice() const`
-
-  * `int getQuantity() const`
-
-  * `double totalValue() const`
-
-
-- **Оператори:**
-
-  * `bool operator==(const Product& other) const`
-
-  * `auto operator<=>(const Product& other) const` — първо по `price`, после по `name`
-
-  * `friend std::ostream& operator<<(std::ostream&, const Product&)`
-
-
+### Оператори:
+- `bool operator==(const Product& other) const`
+- `auto operator<=>(const Product& other) const` — първо по `price`, после по `name`
+- `friend std::ostream& operator<<(std::ostream&, const Product&)`
 
 ---
 
+## Клас `Inventory`
 
+### Private полета:
+- `std::vector<Product> products`
 
-### Клас `Inventory`
+### Методи:
+- `void addProduct(const Product& p)`
+- `void removeByName(const std::string& name)`
+- `std::vector<Product> filterByCategory(const std::string& category) const`
+- `std::vector<Product> filterByPrice(double min, double max) const`
+- `double totalInventoryValue() const`
+- `void sortByPrice()`
+- `std::optional<Product> findCheapest() const`
+- `void print() const`
 
-
-
-- **Private полета:**
-
-  * `std::vector<Product> products`
-
-
-
-- **Методи:**
-
-  * `void addProduct(const Product& p)`
-
-  * `void removeByName(const std::string& name)`
-
-  * `std::vector<Product> filterByCategory(const std::string& category) const`
-
-  * `std::vector<Product> filterByPrice(double min, double max) const`
-
-  * `double totalInventoryValue() const`
-
-  * `void sortByPrice()`
-
-  * `std::optional<Product> findCheapest() const`
-
-  * `void print() const`
-
+### Оператор:
+- `explicit operator bool() const` — връща `true`, ако има налични продукти
 
 ---
 
+# Задача 2
 
+## Клас `Task`
 
-# Задача 2 
+### Private полета:
+- `std::string title`
+- `std::string description`
+- `int priority` (1–5)
+- `bool completed`
 
+### Конструктор:
+- `Task(std::string title, std::string desc, int priority)`
 
-### Клас `Task`
+### Методи:
+- `void markDone()`
+- `bool isCompleted() const`
+- `int getPriority() const`
+- `const std::string& getTitle() const`
 
-
-
-- **Private полета:**
-
-  * `std::string title`
-
-  * `std::string description`
-
-  * `int priority` (1–5)
-
-  * `bool completed`
-
-
-
-- **Конструктор:**
-
-  * `Task(std::string title, std::string desc, int priority)`
-
-
-
-- **Методи:**
-
-  * `void markDone()`
-
-  * `bool isCompleted() const`
-
-  * `int getPriority() const`
-
-  * `const std::string& getTitle() const`
-
-
-
-- **Оператори:**
-
-  * `auto operator<=>(const Task& other) const` — по `priority` (по-висок приоритет първо)
-
-  * `friend std::ostream& operator<<(std::ostream&, const Task&)`
-
-
+### Оператори:
+- `auto operator<=>(const Task& other) const` — по `priority` (по-висок приоритет първо)
+- `friend std::ostream& operator<<(std::ostream&, const Task&)`
 
 ---
 
+## Клас `TaskManager`
 
+### Private полета:
+- `std::vector<Task> tasks`
 
-### Клас `TaskManager`
+### Методи:
+- `void addTask(const Task& t)`
+- `void removeCompleted()`
+- `std::vector<Task> getCompleted() const`
+- `std::vector<Task> getPending() const`
+- `std::vector<Task> filterByPriority(int minPriority) const`
+- `void sortByPriority()`
+- `std::optional<Task> findMostImportant() const`
+- `void printAll() const`
 
-
-
-- **Private полета:**
-
-  * `std::vector<Task> tasks`
-
-
-
-- **Методи:**
-
-  * `void addTask(const Task& t)`
-
-  * `void removeCompleted()`
-
-  * `std::vector<Task> getCompleted() const`
-
-  * `std::vector<Task> getPending() const`
-
-  * `std::vector<Task> filterByPriority(int minPriority) const`
-
-  * `void sortByPriority()`
-
-  * `std::optional<Task> findMostImportant() const`
-
-  * `void printAll() const`
-
-
+### Оператор:
+- `explicit operator bool() const` — връща `true`, ако повече от половината задачи НЕ са завършени
 
 ---
-
 
 
 # Задача 3 

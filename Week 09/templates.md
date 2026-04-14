@@ -230,8 +230,8 @@ show_count(1, "hi", 3.14);
 | `template <typename T, typename U>`    | Шаблон с два типа                          |
 | `template <typename... Ts>`            | Вариадичен шаблон                          |
 | `sizeof...(Ts)`                        | Брой параметри в пакета                    |
-| `(... + args)`                         | Fold expression — ляво сгъване             |
-| `(args + ...)`                         | Fold expression — дясно сгъване            |
+| `(... + args)`                         | Fold expression - ляво сгъване             |
+| `(args + ...)`                         | Fold expression - дясно сгъване            |
 | `template <>`                          | Специализация                              |
 | `concept Foo = requires(...) {...}`    | Дефиниране на concept (C++20)              |
 | `template <Foo T>`                     | Ограничен шаблон с concept                 |

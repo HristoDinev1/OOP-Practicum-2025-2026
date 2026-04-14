@@ -33,8 +33,6 @@
 #### Оператори
 - `T& operator[](size_t index)`
 - `const T& operator[](size_t index) const`
-- `T& at(size_t index)`
-- `const T& at(size_t index) const`
 
 #### Итератори:
 - `T* begin()`
